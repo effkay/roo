@@ -534,4 +534,13 @@ describe Roo::Excelx do
       expect(subject.sheet(0).excelx_format(2,1)).to eq 'm/d/yyyy" "h:mm:ss" "AM/PM'
     end
   end
+
+  describe 'formatted_value with single point precision' do
+    it 'does not crash' do
+      number_1 = Roo::Excelx::Cell::Number.new('2.23', nil, [:numeric_or_formula, "#,##0.0"], 7, nil, Roo::Excelx::Coordinate.new(4, 5))
+      number_2 = Roo::Excelx::Cell::Number.new('2.23', nil, [:numeric_or_formula, "0.0"], 7, nil, Roo::Excelx::Coordinate.new(4, 5))
+      expect(number_1.formatted_value).to eq '2.2'
+      expect(number_2.formatted_value).to eq '2.2'
+    end
+  end
 end
