@@ -46,10 +46,12 @@ module Roo
             '0' => '%.0f',
             '0.0' => '%.1f',
             '0.00' => '%.2f',
+            '0.000' => '%.3f',
             '0.000000' => '%.6f',
             '#,##0' => number_format('%.0f'),
             '#,##0.0' => number_format('%.1f'),
             '#,##0.00' => number_format('%.2f'),
+            '#,##0.000' => number_format('%.3f'),
             '0%' =>  proc do |number|
               Kernel.format('%d%', number.to_f * 100)
             end,
